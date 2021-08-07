@@ -32,10 +32,10 @@ curl --location --request POST 'http://localhost:8080/email' \
 Alter `default_api` value in `application.yml` - must be one of two options `SNAILGUN` or `SPENDGRID`
 
 ### Other notes
-Given Snailgun is the default API, when Snailgun returns QUEUED status, we will poll Snailgun up to 3 times, waiting 5 seconds between each call, till Snailgun returns a SENT status.
+Given Snailgun is the default API, when Snailgun returns `QUEUED` status, we will poll Snailgun up to 3 times, waiting 5 seconds between each call, till Snailgun returns a `SENT` status.
 
 ### Tests
-Located in src/test/java. To run from command line, `./gradlew clean build`
+Located in `src/test/java`. To run from command line, `./gradlew clean build`
 
 ### TODOs:
 The EmailApiService implementations (SnailgunApiService and SpendgridApiService) assume that the 3rd party API will send either a 2xx response, OR times out and returns no response at all. If I had more time, I'd also cover other cases (i.e. API responds with 4xx or 5xx)
