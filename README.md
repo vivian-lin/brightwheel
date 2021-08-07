@@ -31,7 +31,7 @@ curl --location --request POST 'http://localhost:8080/email' \
 Alter `default_api` value in `application.yml` - must be one of two options `SNAILGUN` or `SPENDGRID`
 
 ### Other notes
-If Snailgun is the default API, please note that 
+Given Snailgun is the default API, when Snailgun returns QUEUED status, we will make up to 3 API calls to Snailgun, waiting 5 seconds between each call.
 
 ### Tests
 Located in src/test/java. To run from command line, `./gradlew clean build`

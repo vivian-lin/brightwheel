@@ -51,7 +51,7 @@ public class SnailgunApiRetryableService {
 
             if (EmailStatus.QUEUED.equals(status)) {
                 logger.info("retrying queued email, id: {}", id);
-                throw new SnailgunQueuedRetryException("retrying queued email", id);
+                throw new SnailgunQueuedRetryException("retrying queued email", id, response);
             }
 
             return EmailResponse.builder().emailStatus(status).httpResponse(response).build();
@@ -64,7 +64,7 @@ public class SnailgunApiRetryableService {
     @Recover
     public EmailResponse recover(SnailgunQueuedRetryException e) {
         logger.info("exhausted retries for snailgun email, id: {}", e.getId());
-        return createFailedResponse();
+        return EmailResponse.builder().emailStatus(EmailStatus.QUEUED).httpResponse(e.getResponse()).build();
     }
 
     private static EmailStatus mapStatus(String status) {
