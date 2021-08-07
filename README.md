@@ -1,4 +1,4 @@
-# Brightwheel take home project
+# Brightwheel
 
 ### Dependencies
 You'll need Java 11 installed, and gradle.
