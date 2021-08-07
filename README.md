@@ -1,12 +1,8 @@
 # Brightwheel take home project
 
-## TODOs:
-The EmailApiService implementations (SnailgunApiService and SpendgridApiService) assume that the 3rd party API will send either a 2xx response, OR times out and returns no response at all.
-If I had more time, I'd also cover other cases (i.e. API responds with 4xx or 5xx)
-
-## Steps to hit /email endpoint manually:
+### Steps to hit /email endpoint manually:
 Run application from command line: `./gradlew bootRun`
-cURL the endpoint (see sample payload):
+cURL the endpoint from command line:
 
 ```
 curl --location --request POST 'http://localhost:8080/email' \
@@ -21,4 +17,11 @@ curl --location --request POST 'http://localhost:8080/email' \
 }'
 ```
 
-## Tests located in src/test/java
+### Tests
+Located in src/test/java. To run from command line, `./gradlew clean build`
+
+
+### TODOs:
+The EmailApiService implementations (SnailgunApiService and SpendgridApiService) assume that the 3rd party API will send either a 2xx response, OR times out and returns no response at all.
+If I had more time, I'd also cover other cases (i.e. API responds with 4xx or 5xx)
+
