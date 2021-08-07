@@ -60,7 +60,7 @@ public class SpendgridApiService implements EmailApiService {
 
         try (okhttp3.Response httpResponse = httpClient.newCall(httpRequest).execute()) {
             Response response = mapResponse(httpResponse);
-            logger.info("snailgun response {}", response.getBody());
+            logger.info("spendgrid response {}", response.getBody());
 
             return EmailResponse.builder().emailStatus(EmailStatus.SENT).httpResponse(response).build();
         } catch (IOException e) {
