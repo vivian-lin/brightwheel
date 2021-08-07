@@ -24,7 +24,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.brightwheel.email.dto.Email;
-import com.brightwheel.email.dto.EmailApi;
+import com.brightwheel.email.dto.EmailApiType;
 import com.brightwheel.email.dto.ValidationError;
 import com.brightwheel.email.dto.response.EmailResponse;
 import com.brightwheel.email.dto.response.EmailStatus;
@@ -73,7 +73,7 @@ public class EmailControllerTest {
     @BeforeEach
     public void before() {
         body = objectMapper.createObjectNode();
-        when(defaultApiResolver.getDefault()).thenReturn(EmailApi.valueOf(defaultApi));
+        when(defaultApiResolver.getDefault()).thenReturn(EmailApiType.valueOf(defaultApi));
     }
 
     @Test
@@ -93,7 +93,7 @@ public class EmailControllerTest {
 
     @Test
     public void shouldDefaultToSnailgun() {
-        when(defaultApiResolver.getDefault()).thenReturn(EmailApi.SNAILGUN);
+        when(defaultApiResolver.getDefault()).thenReturn(EmailApiType.SNAILGUN);
 
         Email email = createValidEmail();
         body = objectMapper.valueToTree(email);
@@ -112,7 +112,7 @@ public class EmailControllerTest {
 
     @Test
     public void shouldDefaultToSpendgrid() {
-        when(defaultApiResolver.getDefault()).thenReturn(EmailApi.SPENDGRID);
+        when(defaultApiResolver.getDefault()).thenReturn(EmailApiType.SPENDGRID);
 
         Email email = createValidEmail();
         body = objectMapper.valueToTree(email);

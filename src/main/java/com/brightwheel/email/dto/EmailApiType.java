@@ -1,5 +1,5 @@
 package com.brightwheel.email.dto;
 
-public enum EmailApi {
+public enum EmailApiType {
     SPENDGRID, SNAILGUN;
 }

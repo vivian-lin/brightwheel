@@ -12,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
 
 import com.brightwheel.email.dto.Email;
-import com.brightwheel.email.dto.EmailApi;
+import com.brightwheel.email.dto.EmailApiType;
 import com.brightwheel.email.dto.request.EmailRequest;
 import com.brightwheel.email.dto.response.EmailResponse;
 import com.brightwheel.email.exception.FailedToSendEmailException;
@@ -26,21 +26,21 @@ public class EmailService {
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
 
     private EmailValidator validator;
-    private Map<EmailApi, EmailApiService> emailDispatchServices;
+    private Map<EmailApiType, EmailApiService> emailDispatchServices;
     private DefaultApiResolver defaultApiResolver;
 
     @Autowired
     public EmailService(EmailValidator validator, @Qualifier("spendgridApiImpl") EmailApiService spendgridImpl,
             @Qualifier("snailgunApiImpl") EmailApiService snailgunImpl, DefaultApiResolver defaultApiResolver) {
         this.validator = validator;
-        this.emailDispatchServices = Map.of(EmailApi.SPENDGRID, spendgridImpl, EmailApi.SNAILGUN, snailgunImpl);
+        this.emailDispatchServices = Map.of(EmailApiType.SPENDGRID, spendgridImpl, EmailApiType.SNAILGUN, snailgunImpl);
         this.defaultApiResolver = defaultApiResolver;
     }
 
     public EmailResponse send(Email email) {
         validate(email);
 
-        EmailApi defaultApi = defaultApiResolver.getDefault();
+        EmailApiType defaultApi = defaultApiResolver.getDefault();
         logger.info("defaulting to email API {}", defaultApi);
 
         EmailApiService apiService = emailDispatchServices.get(defaultApi);
