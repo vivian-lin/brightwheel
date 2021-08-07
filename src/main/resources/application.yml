@@ -1,0 +1,8 @@
+default_api: SPENDGRID # all-caps for enum class
+api:
+  spendgrid:
+    url: https://bw-interviews.herokuapp.com/spendgrid/send_email
+    api_key: api_key_8tmlbgj2zvpWIiB6wFwGIc0x
+  snailgun:
+    url: https://bw-interviews.herokuapp.com/snailgun/emails
+    api_key: api_key_QJCnWMsfmE4qJ3fjfPUBdiIa

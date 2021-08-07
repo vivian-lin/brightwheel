@@ -1,0 +1,35 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.3'
+	id 'io.freefair.lombok' version '5.3.3.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.brightwheel'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'com.squareup.okhttp3:okhttp:3.13.1'
+	implementation 'commons-validator:commons-validator:1.6'
+	implementation 'org.apache.commons:commons-lang3:3.8.1'
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.retry:spring-retry'
+     
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.rest-assured:spring-mock-mvc:3.3.0'
+}
+
+lombok {
+    config['lombok.anyConstructor.addConstructorProperties'] = 'true'
+}
+
+test {
+	useJUnitPlatform()
+}
