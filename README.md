@@ -1,6 +1,7 @@
 # Brightwheel
 
 ### Dependencies
+Please let me know if the below steps don't work for you. I already had homebrew, Java 11, and gradle installed on my computer so I didn't need to do these steps.
 You'll need Java 11 installed, and gradle.
 ```
 brew tap AdoptOpenJDK/openjdk
